@@ -14,8 +14,7 @@
         <activity android:name=".DetailMallActivity" />
         <activity android:name=".RegisterActivity" />
         <activity android:name=".LoginActivity" />
-        <activity android:name=".SplashScreeActivity"
-            >
+        <activity android:name=".SplashScreeActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
