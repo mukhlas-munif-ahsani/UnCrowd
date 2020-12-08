@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/itemHome"
+        android:icon="@drawable/state_bot_nav_ic_home"
+        android:title="Beranda" />
+
+    <item
+        android:id="@+id/itemChat"
+        android:icon="@drawable/state_bot_nav_ic_scan"
+        android:title="Scan QR" />
+
+    <item
+        android:id="@+id/itemAccount"
+        android:icon="@drawable/state_bot_bnv_ic_report"
+        android:title="Lapor" />
+</menu>
