@@ -64,7 +64,10 @@ public class LoginActivity extends AppCompatActivity {
 
             if (!mPass.getText().toString().trim().isEmpty()) {
 
-                if (mEmail.getText().toString().equals("shallaziz@students.undip.ac.id") && mPass.getText().toString().equals("simulasiuncrowd")) {
+                if (mEmail.getText().toString().equals("simulasi@uncrowd.com") && mPass.getText().toString().equals("simulasiuncrowd") ||
+                        mEmail.getText().toString().equals("shallaziz@students.undip.ac.id") && mPass.getText().toString().equals("simulasiuncrowd") ||
+                        mEmail.getText().toString().equals("ubbidahagusn@students.undip.ac.id") && mPass.getText().toString().equals("simulasiuncrowd") ||
+                        mEmail.getText().toString().equals("cherlipermata@students.undip.ac.id") && mPass.getText().toString().equals("simulasiuncrowd")) {
                     Intent intent = new Intent(this, MainActivity.class);
                     startActivity(intent);
                     finish();

@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 
+import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
 
 import android.os.CountDownTimer;
@@ -28,11 +29,20 @@ public class QrFragment extends Fragment {
     ImageView mQrImage;
     @BindView(R.id.textView_timer)
     TextView mTimer;
+    @BindView(R.id.cardContentExist)
+    CardView mContent;
+    @BindView(R.id.cardContentNotExist)
+    CardView mNoContent;
+
+    private static QrFragment instance;
+
+    public static QrFragment getInstance(){
+        return instance;
+    }
 
     public QrFragment() {
         // Required empty public constructor
     }
-
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -47,12 +57,13 @@ public class QrFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_qr, container, false);
 
         ButterKnife.bind(this, view);
+        instance = this;
 
-        new CountDownTimer(60000, 1000){
+        new CountDownTimer(600000, 1000){
 
             @Override
             public void onTick(long l) {
-                @SuppressLint("DefaultLocale") String hms = String.format("%02d:%02d",
+                @SuppressLint("DefaultLocale")   String hms = String.format("%02d:%02d",
                         TimeUnit.MILLISECONDS.toMinutes(l),
                         TimeUnit.MILLISECONDS.toSeconds(l) - TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(l)));
                 mTimer.setText(hms);
@@ -79,4 +90,10 @@ public class QrFragment extends Fragment {
             Log.v("QR Eror", e.toString());
         }
     }
+
+    public void showContent(){
+        mContent.setVisibility(View.VISIBLE);
+        mNoContent.setVisibility(View.GONE);
+    }
+
 }

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/colorPrimary"
     tools:context=".QrFragment">
 
@@ -14,78 +14,110 @@
         android:backgroundTint="@color/white" />
 
     <androidx.cardview.widget.CardView
+        android:id="@+id/cardContentNotExist"
         android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="visible"
+        android:layout_marginTop="56dp"
+        app:cardCornerRadius="26dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="40dp"
+                android:layout_marginEnd="24dp"
+                android:text="SCAN QR Code"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="40dp"
+                android:layout_marginEnd="24dp"
+                android:alpha="0.7"
+                android:gravity="center_horizontal"
+                android:text="Kode QR akan berakhir dalam"
+                android:textColor="@color/black"
+                android:textSize="12sp"
+                android:textStyle="normal" />
+
+            <TextView
+                android:id="@+id/textView_timer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="24dp"
+                android:gravity="center_horizontal"
+                android:text="00:00"
+                android:textColor="@color/colorPrimary"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <ImageView
+                android:id="@+id/imageView_qr"
+                android:layout_width="300dp"
+                android:layout_height="300dp"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="8dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="84dp"
+                android:layout_marginTop="40dp"
+                android:layout_marginEnd="84dp"
+                android:gravity="center_horizontal"
+                android:text="Arahkan kode QR kepada scaner petugas penjaga Mall"
+                android:textColor="@color/colorPrimary"
+                android:textSize="12sp"
+                android:textStyle="normal" />
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardContentExist"
+        android:layout_width="match_parent"
+        android:visibility="gone"
         android:layout_height="match_parent"
         android:layout_marginTop="56dp"
         app:cardCornerRadius="26dp">
 
-        <ScrollView
+        <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
-            <LinearLayout
+            <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical">
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="40dp"
+                android:layout_marginEnd="24dp"
+                android:text="SCAN QR Code"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:textStyle="bold" />
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="SCAN QR Code"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginEnd="24dp"
-                    android:layout_marginTop="40dp"
-                    android:textStyle="bold"
-                    android:textSize="18sp"
-                    android:textColor="@color/black"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/colorPrimary"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                android:layout_centerInParent="true"
+                android:text="QR Code Belum Tersedia"/>
+        </RelativeLayout>
 
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Kode QR akan berakhir dalam"
-                    android:layout_marginStart="24dp"
-                    android:layout_marginEnd="24dp"
-                    android:layout_marginTop="40dp"
-                    android:textStyle="normal"
-                    android:alpha="0.7"
-                    android:gravity="center_horizontal"
-                    android:textSize="12sp"
-                    android:textColor="@color/black"/>
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="00:00"
-                    android:layout_marginStart="24dp"
-                    android:id="@+id/textView_timer"
-                    android:layout_marginEnd="24dp"
-                    android:gravity="center_horizontal"
-                    android:layout_marginTop="8dp"
-                    android:textStyle="bold"
-                    android:textSize="18sp"
-                    android:textColor="@color/colorPrimary"/>
-
-                <ImageView
-                    android:id="@+id/imageView_qr"
-                    android:layout_marginTop="8dp"
-                    android:layout_width="300dp"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_height="300dp"/>
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Arahkan kode QR kepada scaner petugas penjaga Mall"
-                    android:layout_marginStart="84dp"
-                    android:layout_marginEnd="84dp"
-                    android:layout_marginTop="40dp"
-                    android:textStyle="normal"
-                    android:gravity="center_horizontal"
-                    android:textSize="12sp"
-                    android:textColor="@color/colorPrimary"/>
-            </LinearLayout>
-
-        </ScrollView>
     </androidx.cardview.widget.CardView>
 
 

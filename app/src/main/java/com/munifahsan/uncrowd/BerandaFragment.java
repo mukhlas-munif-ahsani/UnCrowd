@@ -14,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.munifahsan.uncrowd.adapters.MallAdapter;
 import com.munifahsan.uncrowd.adapters.NewsAdapter;
@@ -40,6 +41,14 @@ public class BerandaFragment extends Fragment {
     NewsAdapter newsAdapter;
     private LinearLayoutManager mLayoutManager;
 
+    data data;
+
+    private static BerandaFragment instance;
+
+    public static BerandaFragment getInstance() {
+        return instance;
+    }
+
     public BerandaFragment() {
         // Required empty public constructor
     }
@@ -58,31 +67,15 @@ public class BerandaFragment extends Fragment {
 
         ButterKnife.bind(this, view);
 
+        instance = this;
+
         showMall();
         showNews();
-
-        new CountDownTimer(10800000, 1000){
-
-            @Override
-            public void onTick(long l) {
-                @SuppressLint("DefaultLocale") String hms = String.format("%02d:%02d:%02d",
-                        TimeUnit.MILLISECONDS.toHours(l),
-                        TimeUnit.MILLISECONDS.toMinutes(l) - TimeUnit.HOURS.toMinutes(TimeUnit.MILLISECONDS.toHours(l)),
-                        TimeUnit.MILLISECONDS.toSeconds(l) - TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(l)));
-
-                mTimer.setText(hms);
-            }
-
-            @Override
-            public void onFinish() {
-
-            }
-        }.start();
 
         return view;
     }
 
-    public void showMall(){
+    public void showMall() {
         ArrayList<MallModel> modelArrayList = new ArrayList<>();
         modelArrayList.add(new MallModel(R.drawable.image_java_mall_semarang, "Java Mall Semarang", "Jl. MT Haryono No. 992-994", "572/1000"));
         modelArrayList.add(new MallModel(R.drawable.image_dp_mall_semarang, "DP Mall Semarang", "Jl. Pemuda No.150", "666/1000"));
@@ -106,16 +99,40 @@ public class BerandaFragment extends Fragment {
         });
     }
 
-    public void showNews(){
+    public void showNews() {
         ArrayList<NewsModel> modelArrayList = new ArrayList<>();
-        modelArrayList.add(new NewsModel(R.drawable.covid, "COVID - 19 di indonesia semakin meningkat",  ""));
-        modelArrayList.add(new NewsModel(R.drawable.covidan, "Penanganan VOVID di indonesia",  ""));
+        modelArrayList.add(new NewsModel(R.drawable.covid, "COVID - 19 di indonesia semakin meningkat", ""));
+        modelArrayList.add(new NewsModel(R.drawable.covidan, "Penanganan COVID di indonesia", ""));
 
         newsAdapter = new NewsAdapter(modelArrayList);
         mLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
         mRvNews.setHasFixedSize(true);
         mRvNews.setLayoutManager(mLayoutManager);
         mRvNews.setAdapter(newsAdapter);
+    }
+
+    public void showMessage(String msg) {
+        Toast.makeText(getActivity(), msg, Toast.LENGTH_LONG).show();
+    }
+
+    public void showTimer(){
+        new CountDownTimer(10800000, 1000) {
+
+            @Override
+            public void onTick(long l) {
+                @SuppressLint("DefaultLocale") String hms = String.format("%02d:%02d:%02d",
+                        TimeUnit.MILLISECONDS.toHours(l),
+                        TimeUnit.MILLISECONDS.toMinutes(l) - TimeUnit.HOURS.toMinutes(TimeUnit.MILLISECONDS.toHours(l)),
+                        TimeUnit.MILLISECONDS.toSeconds(l) - TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(l)));
+
+                mTimer.setText(hms);
+            }
+
+            @Override
+            public void onFinish() {
+
+            }
+        }.start();
     }
 
 }

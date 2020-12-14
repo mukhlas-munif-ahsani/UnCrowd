@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.ImageView;
 import android.widget.Switch;
 import android.widget.TextView;
@@ -25,12 +26,16 @@ public class DetailMallActivity extends AppCompatActivity {
 
     int posisi;
 
+    data data;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_mall);
 
         ButterKnife.bind(this);
+
+        data = new data();
 
         Intent intent = getIntent();
         posisi = intent.getIntExtra("posisi", 0);
@@ -67,6 +72,16 @@ public class DetailMallActivity extends AppCompatActivity {
     public void pesan(){
         Intent intent = new Intent(this, DipesanActivity.class);
         intent.putExtra("posisi", posisi);
+        data.setDipesan(true);
+        if (data.isDipesan()){
+            Log.d("dipesan", "true");
+        } else {
+            Log.d("dipesan", "false");
+        }
+
+        BerandaFragment.getInstance().showTimer();
+       // QrFragment.getInstance().showContent();
+
         startActivity(intent);
         finish();
     }

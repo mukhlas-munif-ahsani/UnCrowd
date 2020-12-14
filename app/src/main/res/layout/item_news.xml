@@ -63,7 +63,7 @@
                     android:layout_toStartOf="@+id/textView_mall_jumlah"
                     android:text="Malioboro mall"
                     android:textColor="@color/colorPrimary"
-                    android:textSize="10sp"
+                    android:textSize="12sp"
                     android:textStyle="bold" />
 
                 <TextView
